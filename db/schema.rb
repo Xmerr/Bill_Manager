@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_001122) do
+ActiveRecord::Schema.define(version: 2022_02_09_002442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_cycles", force: :cascade do |t|
+    t.date "date"
+    t.integer "debt_begin"
+    t.integer "debt_end"
+    t.integer "savings_begin"
+    t.integer "savings_end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "bills", force: :cascade do |t|
     t.date "date"
@@ -23,4 +33,14 @@ ActiveRecord::Schema.define(version: 2022_02_08_001122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.string "name"
+    t.integer "amount"
+    t.bigint "bill_cycle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bill_cycle_id"], name: "index_line_items_on_bill_cycle_id"
+  end
+
+  add_foreign_key "line_items", "bill_cycles"
 end

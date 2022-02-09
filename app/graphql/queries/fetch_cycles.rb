@@ -1,9 +1,9 @@
 module Queries
     class FetchCycles < Queries::BaseQuery
-        type [Types::CycleType], null: false
+        type [Types::BillCycleType], null: false 
 
         def resolve
-            Bill.all.order(date: :desc)
+            BillCycle.all.order(date: :desc)
         end
     end
 end

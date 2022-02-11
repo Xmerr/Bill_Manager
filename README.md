@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+When I pay bills I use a google sheet I created and added macros to sometime in highschool. It's pretty old and hard to modify. This tool is indended to replace that google sheet.
 
-* Ruby version
+## Reason
 
-* System dependencies
+This project is so I can try some new techs. Specifically GraphQL and Ruby on Rails, both of which are new to me. I expect the hardest part of this project will be learning ruby but I am excited to see how it is.
 
-* Configuration
+## How to Use
 
-* Database creation
+### Web app
 
-* Database initialization
+```
+rails s --binding=localhost
+```
 
-* How to run the test suite
+### Tests
 
-* Services (job queues, cache servers, search engines, etc.)
+// TODO
 
-* Deployment instructions
+### Storybook
 
-* ...
+// TODO

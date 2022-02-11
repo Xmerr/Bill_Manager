@@ -1,57 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
 import { useParams, useNavigate } from 'react-router';
+import Button from '@mui/material/Button';
+import { gql } from 'graphql-request';
+import request from '../../helpers/api';
 
 const BillCycleDetails = props => {
-    const [bill, setBill] = useState({});
+    const [cycle, setCycle] = useState({});
     const params = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const { id } = params;
-        const url = `/api/v1/show/${id}`;
-        fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
+        const query = gql`
+            {
+                 cycle(id: ${id}) {
+                    date
+                    debtBegin
+                    debtEnd
+                    id
+                    savingsBegin
+                    savingsEnd
                 }
-                throw new Error('oops');
+            }
+        `;
+
+        request(query)
+            .then(response => {
+                setCycle(response.cycle);
             })
-            .then(response => setBill(response));
+            .catch(() => {
+                navigate('/bill-cycles');
+            });
     }, []);
 
     const deleteCycle = () => {
         const { id } = params;
-        const url = `/api/v1/destroy/${id}`;
-        const token = document.querySelector('meta[name="csrf-token"]').content;
+        const query = gql`
+            mutation d {
+                deleteBillingCycle(input: { id: ${id} }) {
+                    billCycle {
+                        id
+                    }
+                }
+            }
+        `;
 
-        fetch(url, {
-            method: 'delete',
-            headers: {
-                'X-CSRF-Token': token,
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('oops');
-            })
-            .then(response => {
-                if (response.ok) {
-                    return;
-                }
-                throw new Error('oops');
-            })
-            .then(() => {
-                navigate('/bill-cycles');
-            });
+        request(query).then(() => {
+            navigate('/bill-cycles');
+        });
     };
 
     return (
         <>
             <div>I'm just a bill</div>
+            <div>{JSON.stringify(cycle)}</div>
             <Button variant='contained' onClick={deleteCycle}>
                 Delete
             </Button>

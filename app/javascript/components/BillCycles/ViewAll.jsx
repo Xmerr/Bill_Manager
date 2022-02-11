@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { gql } from 'graphql-request';
+import request from '../../helpers/api';
 
 const BillCycles = () => {
-    const [bills, setBills] = useState([]);
-    const params = useParams();
+    const [cycles, setCycles] = useState([]);
 
     useEffect(() => {
-        const { id } = params;
-        const url = `/api/v1/bills/index`;
-        fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
+        const query = gql`
+            {
+                cycles {
+                    date
+                    debtBegin
+                    debtEnd
+                    id
+                    savingsBegin
+                    savingsEnd
                 }
-                throw new Error('oops');
-            })
-            .then(response => setBills(response));
+            }
+        `;
+        request(query).then(response => {
+            setCycles(response.cycles);
+        });
     }, []);
 
-    return <div>{bills?.length} bill cycles to view</div>;
+    return <div>{cycles?.length} bill cycles to view</div>;
 };
 
 export default BillCycles;

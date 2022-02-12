@@ -26,4 +26,8 @@ rails s --binding=localhost
 
 ### Storybook
 
-// TODO
+```
+yarn storybook
+```
+
+Will run the storybook project on port 6008

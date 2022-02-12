@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material';
 import blue from '@mui/material/colors/blue';
 import purple from '@mui/material/colors/purple';
 
-const Themer = ({ children }) => {
+export const Themer = ({ children }) => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     const theme = useMemo(

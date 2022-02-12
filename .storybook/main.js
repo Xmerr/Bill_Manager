@@ -1,3 +1,5 @@
+const customWebpackConfig = require('../config/webpack/custom');
+
 module.exports = {
     stories: [
         '../app/javascript/**/*.stories.mdx',
@@ -7,5 +9,17 @@ module.exports = {
     framework: '@storybook/react',
     features: {
         emotionAlias: false,
+    },
+    webpackFinal: config => {
+        return {
+            ...config,
+            resolve: {
+                ...config.resolve,
+                alias: {
+                    ...config.resolve.alias,
+                    ...customWebpackConfig.resolve.alias,
+                },
+            },
+        };
     },
 };

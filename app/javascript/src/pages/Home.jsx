@@ -1,5 +1,5 @@
 import React from 'react';
-import { Splash } from '../templates';
+import { Splash } from '@templates';
 
 export default () => (
     <Splash

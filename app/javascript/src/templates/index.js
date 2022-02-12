@@ -1,1 +1,1 @@
-export { default as Splash } from './Splash/Splash';
+export * from './Splash';

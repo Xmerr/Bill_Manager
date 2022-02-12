@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Splash from '../Splash';
+import { Splash } from '../';
 
 export default {
     title: 'Templates/Splash',

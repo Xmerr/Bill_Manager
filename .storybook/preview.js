@@ -1,4 +1,4 @@
-import Themer from '../app/javascript/src/helpers/Themer';
+import Themer from '@helpers/Themer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 export const parameters = {

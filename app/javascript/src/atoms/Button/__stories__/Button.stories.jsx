@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from '../Button';
+import { Button } from '../';
+import { colors, buttonVariants } from '../../../helpers/enums';
 
 export default {
     title: 'Atoms/Buttons',
@@ -17,12 +18,14 @@ export default {
         color: {
             description:
                 'Color and mood of the button, options are set by the mui theme but the list can be easily found here',
+            options: colors,
             table: {
                 defaultValues: { summary: 'primary' },
             },
         },
         variant: {
             description: 'Type of button',
+            options: buttonVariants,
             table: {
                 defaultValues: { summary: 'contained' },
             },

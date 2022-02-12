@@ -5,7 +5,7 @@ export default {
     title: 'Molecules/Table',
     component: Table,
     args: {
-        columns: [{ name: 'Column1' }, 'Column2', { name: 'Column3', key: 'C3' }],
+        columns: [{ name: 'Column1', presence: 3 }, 'Column2', { name: 'Column3', key: 'C3' }],
         data: [
             {
                 id: 1,
@@ -25,7 +25,7 @@ export default {
     argTypes: {
         columns: {
             description:
-                'Column configuration including title, data source, and any other settings needed to configure the table.',
+                'Column configuration including title, data source, presence, and any other settings needed to configure the table.',
         },
         data: {
             description:

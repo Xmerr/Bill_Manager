@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MuiTable from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
-import { TableBody, TableHeader, proptypes } from '../../atoms/TableElements';
+import { TableBody, TableHeader } from '../../atoms/TableElements';
 
 /**
  * Formats all the columns into a consistent shape. Doing this as soon as the component loads is easier than constantly type checking
@@ -11,8 +11,10 @@ import { TableBody, TableHeader, proptypes } from '../../atoms/TableElements';
 const formatColumns = columns => {
     const formattedList = columns.map(column => {
         return {
-            name: column?.name || column,
+            ...column,
+            name: column?.name || column.toTitleCase(),
             key: column?.key || column?.name || column,
+            presence: column.presence || 1,
         };
     });
 
@@ -29,7 +31,7 @@ export const Table = props => {
 
     return (
         <TableContainer>
-            <MuiTable>
+            <MuiTable size='small'>
                 <TableHeader columns={formattedColumns} expandable={expandable} />
                 <TableBody columns={formattedColumns} data={data} expandable={expandable} />
             </MuiTable>
@@ -43,8 +45,9 @@ Table.propTypes = {
         PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.shape({
-                name: PropTypes.string.isRequired,
                 key: PropTypes.string,
+                name: PropTypes.string.isRequired,
+                presence: PropTypes.number,
             }),
         ])
     ).isRequired,

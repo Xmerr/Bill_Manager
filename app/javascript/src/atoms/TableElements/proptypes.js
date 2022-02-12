@@ -6,6 +6,7 @@ export const columns = PropTypes.arrayOf(
         PropTypes.shape({
             name: PropTypes.string.isRequired,
             key: PropTypes.string,
+            presence: PropTypes.number,
         }),
     ])
 ).isRequired;

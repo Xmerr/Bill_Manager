@@ -1,3 +1,8 @@
 .noBottomBorder > * {
     border-bottom: unset !important;
 }
+
+.expandWidth {
+    width: 4%;
+    min-width: 65px;
+}

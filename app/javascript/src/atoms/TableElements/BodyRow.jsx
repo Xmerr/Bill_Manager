@@ -29,7 +29,9 @@ const BodyRow = ({ columns, row, expandable }) => {
                     </TableCell>
                 )}
                 {columns.map(column => (
-                    <TableCell key={column.key}>{row[column.key]}</TableCell>
+                    <TableCell key={column.key}>
+                        {column.render ? column.render(row) : row[column.key]}
+                    </TableCell>
                 ))}
             </TableRow>
             {expandable && row.expand && (

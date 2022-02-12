@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../components/Router';
+import App from '../src/Router';
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<App />, document.body.appendChild(document.createElement('div')));

@@ -1,6 +1,6 @@
 {
-  "ReactInjector.js": "/packs/js/ReactInjector-f525a51d90446cf0625b.js",
-  "ReactInjector.js.map": "/packs/js/ReactInjector-f525a51d90446cf0625b.js.map",
+  "ReactInjector.js": "/packs/js/ReactInjector-2b6a6725be93842dbe0a.js",
+  "ReactInjector.js.map": "/packs/js/ReactInjector-2b6a6725be93842dbe0a.js.map",
   "application.js": "/packs/js/application-4ff707c731c80cbe6d96.js",
   "application.js.map": "/packs/js/application-4ff707c731c80cbe6d96.js.map",
   "entrypoints": {
@@ -14,10 +14,10 @@
     },
     "ReactInjector": {
       "js": [
-        "/packs/js/ReactInjector-f525a51d90446cf0625b.js"
+        "/packs/js/ReactInjector-2b6a6725be93842dbe0a.js"
       ],
       "js.map": [
-        "/packs/js/ReactInjector-f525a51d90446cf0625b.js.map"
+        "/packs/js/ReactInjector-2b6a6725be93842dbe0a.js.map"
       ]
     }
   }

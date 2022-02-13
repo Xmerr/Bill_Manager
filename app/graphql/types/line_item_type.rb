@@ -1,5 +1,7 @@
 module Types
   class LineItemType < Types::BaseObject
+    field :id, ID, null: false
+
     field :name, String, null: false do
       description "Descriptive name for this item"
     end

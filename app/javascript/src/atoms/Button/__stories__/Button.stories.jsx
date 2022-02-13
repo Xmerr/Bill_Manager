@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../';
-import { colors, buttonVariants } from '../../../helpers/enums';
+import { colors, buttonVariants, sizes } from '@helpers/enums';
 
 export default {
     title: 'Atoms/Buttons',
@@ -8,6 +8,7 @@ export default {
     args: {
         children: 'Button',
         color: 'primary',
+        size: 'medium',
         variant: 'contained',
     },
     argTypes: {
@@ -22,6 +23,10 @@ export default {
             table: {
                 defaultValues: { summary: 'primary' },
             },
+        },
+        size: {
+            description: 'Size of the button',
+            options: sizes,
         },
         variant: {
             description: 'Type of button',

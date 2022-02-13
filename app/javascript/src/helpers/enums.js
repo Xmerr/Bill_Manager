@@ -1,8 +1,10 @@
-export const colors = ['inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'];
+export const alignments = ['center', 'inherit', 'justify', 'left', 'right'];
 
 export const buttonVariants = ['contained', 'outlined', 'text'];
 
-export const alignments = ['center', 'inherit', 'justify', 'left', 'right'];
+export const colors = ['inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'];
+
+export const sizes = ['small', 'medium', 'large'];
 
 export const textVariants = [
     'body1',

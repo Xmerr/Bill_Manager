@@ -1,0 +1,17 @@
+.noBottomBorder > * {
+    border-bottom: unset !important;
+}
+
+.actions {
+    display: flex !important;
+    justify-content: flex-end;
+
+    & > * {
+        margin-left: 8px !important;
+    }
+}
+
+.expandWidth {
+    width: 4%;
+    min-width: 65px;
+}

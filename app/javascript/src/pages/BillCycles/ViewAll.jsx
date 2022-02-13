@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { gql } from 'graphql-request';
+import { deleteCycle } from '@helpers/requests';
 import request from '@helpers/api';
 import { Tableview } from '@templates';
 
@@ -33,8 +35,9 @@ const formatCycle = ({ lineItems, ...rest }) => {
 const BillCycles = () => {
     const [cycles, setCycles] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
-    useEffect(() => {
+    const fetchData = async () => {
         const query = gql`
             {
                 cycles {
@@ -43,24 +46,47 @@ const BillCycles = () => {
                     debtEnd
                     savingsEnd
                     lineItems {
+                        id
                         name
                         amount
                     }
                 }
             }
         `;
-        request(query).then(response => {
-            setCycles(response.cycles.map(formatCycle));
-            setLoading(false);
-        });
-    }, []);
+
+        const response = await request(query);
+
+        setCycles(response.cycles.map(formatCycle));
+        setLoading(false);
+    };
+
+    const deleteRecord = async ({ id }) => {
+        setLoading(true);
+        await deleteCycle(id);
+        fetchData();
+    };
+
+    useEffect(fetchData, []);
+
+    const actions = [
+        {
+            name: 'Details',
+            onClick: ({ id }) => navigate(`/bill-cycles/${id}`),
+        },
+        {
+            isDelete: true,
+            onClick: deleteRecord,
+        },
+    ];
 
     return (
         <Tableview
+            actions={actions}
             columns={cycleColums}
+            data={cycles}
+            lading={loading}
             subtitle='Here you can view all the billing cycles already completed'
             title='Bill Cycles'
-            data={cycles}
         />
     );
 };

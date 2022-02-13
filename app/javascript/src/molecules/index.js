@@ -1,2 +1,5 @@
+export * from './ConfirmationDialog';
+export * from './DeleteDialog';
+export * from './Dialog';
 export * from './Navbar';
-export * from './Table';
+export * as TableElements from '../molecules/TableElements';

@@ -8,8 +8,8 @@ const graphQLClient = new GraphQLClient('/graphql', {
     },
 });
 
-const request = query => {
-    return graphQLClient.request(query);
+const request = (query, params) => {
+    return graphQLClient.request(query, params);
 };
 
 export default request;

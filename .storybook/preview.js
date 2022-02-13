@@ -1,5 +1,6 @@
 import Themer from '@helpers/Themer';
 import { BrowserRouter as Router } from 'react-router-dom';
+import '@helpers/prototypes';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },

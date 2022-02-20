@@ -10,6 +10,7 @@ export default {
         children: 'Example Text',
         variant: 'body1',
         paragraph: false,
+        loading: false,
     },
     argTypes: {
         children: {

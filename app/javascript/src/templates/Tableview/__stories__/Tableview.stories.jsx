@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tableview } from '../';
+import { Tableview } from '../TableView';
 
 export default {
     title: 'Templates/Tableview',
@@ -7,6 +7,7 @@ export default {
     args: {
         title: 'Table View',
         subtitle: 'A template that primary function is to display table data',
+        loading: false,
         columns: [{ name: 'Column1' }, 'Column2', { name: 'Column3', key: 'C3' }],
         data: [
             {

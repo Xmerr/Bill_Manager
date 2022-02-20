@@ -7,6 +7,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
+import Skeleton from '@mui/material/Skeleton';
 import { Button } from '@atoms';
 import { DeleteButton } from '@organisms/DeleteButton';
 import { actions, columns, expandable, row } from './proptypes.js';
@@ -25,8 +26,18 @@ const actionsRenderer =
         );
     };
 
-const BodyRow = ({ actions, additionalCols, columns, expandable, row }) => {
+const BodyRow = ({ actions, additionalCols, columns, expandable, loading, row }) => {
     const [open, setOpen] = useState(false);
+
+    if (loading) {
+        return (
+            <TableRow>
+                <TableCell colSpan={columns.length + additionalCols}>
+                    <Skeleton variant='rectangular' height={36} />
+                </TableCell>
+            </TableRow>
+        );
+    }
 
     return (
         <>

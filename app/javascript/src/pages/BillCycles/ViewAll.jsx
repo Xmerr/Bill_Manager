@@ -84,7 +84,7 @@ const BillCycles = () => {
             actions={actions}
             columns={cycleColums}
             data={cycles}
-            lading={loading}
+            loading={loading}
             subtitle='Here you can view all the billing cycles already completed'
             title='Bill Cycles'
         />

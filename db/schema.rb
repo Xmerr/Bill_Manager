@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 2022_02_09_002442) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "bills", force: :cascade do |t|
-    t.date "date"
-    t.integer "savings"
-    t.integer "debt"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "line_items", force: :cascade do |t|
     t.string "name"
     t.integer "amount"

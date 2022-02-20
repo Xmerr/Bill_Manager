@@ -22,3 +22,7 @@ export const textVariants = [
     'subtitle1',
     'subtitle2',
 ];
+
+export const inputTypes = ['currency', 'text'];
+
+export const inputVariants = ['filled', 'outlined', 'standard'];

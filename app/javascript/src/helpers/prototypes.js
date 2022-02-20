@@ -5,7 +5,30 @@ String.prototype.toTitleCase = function () {
     );
 };
 
-Number.prototype.toDollars = function () {
-    const dollars = this.valueOf() / 100;
-    return dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+/**
+ * Converts from pennies to dollars
+ * @param {bool} formatted If true, will prepend a $
+ * @returns a string in dollar format
+ */
+const toDollars = function (formatted) {
+    const onlyNums = this.valueOf().toString().replace(/[^\d]/g, '');
+    const dollars = onlyNums / 100;
+
+    return formatted
+        ? dollars.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+        : dollars.toFixed(2);
 };
+
+Number.prototype.toDollars = toDollars;
+String.prototype.toDollars = toDollars;
+
+/**
+ * Converts from dollars to pennies
+ * @returns an integer in pennies
+ */
+const toPennies = function () {
+    return Math.round(this.valueOf() * 100);
+};
+
+Number.prototype.toPennies = toPennies;
+String.prototype.toPennies = toPennies;

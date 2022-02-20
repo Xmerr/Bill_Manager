@@ -35,6 +35,7 @@ export default {
                 C3: 'cell 6',
             },
         ],
+        loading: false,
     },
     argTypes: {
         actions: {
